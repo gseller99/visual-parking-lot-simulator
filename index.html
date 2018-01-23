@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Visual Parking Lot Simulator</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="javascript" type="text/javascript" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style type="text/css">
+
+#parkingLot {
+	width: 1385px;
+	height: 1035px;
+	position: absolute;
+	z-index: 1;
+	margin: 40px;
+}
+
+.carPic {
+	/*transform: rotate(270deg);*/
+	transition: transform 1s;
+    height: 100px;
+   /* width: 200px;*/
+    position: absolute;
+    z-index: 51;
+	top: 950px;
+	left: 1100px;
+}
+
+</style>
+
+</head>
+<body>
+
+<img id="parkingLot" src="parkinglot.jpg">
+<img id="car1" class="carPic" src="Cars/car-hot-pink.png">
+
+<!-- <div class="bg"></div> -->
+<script type="text/javascript">
+
+function Space(top, left, width, height, orientation, openingDir) {
+this.top = top;
+this.left = left;
+this.width = width;
+this.height = height;
+this.orientation = orientation;
+this.openingDir = openingDir;
+this.projection = calculateProjection();
+function calculateProjection( ){
+	//use orientation and openingDirection to calculate projection properties
+}
+}
+
+var spaces = [
+
+new Space(15, 12, 200, 110)
+
+]	
+
+
+</script>
+</body>
+</html>
