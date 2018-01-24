@@ -21,14 +21,27 @@
 
 
 .carPic {
-	transform: rotate(90deg);
-	/*transition: transform 1s;*/
+	transition: transform 1s;
     height: 100px;
     position: absolute;
     z-index: 51;
+	
+}
+
+#car1 {
+	transform: rotate(-90deg);
+	top: 1150px;
+	left: 263px;
+
+	}
+
+#car2 {
+	transform: rotate(90deg);
 	top: 1150px;
 	left: 1010px;
-}
+
+	}
+
 
  .intersection1 {
     	background-color: lightblue;
@@ -86,7 +99,7 @@
 <div class="intersection4"></div>
 
 <img id="car1" class="carPic" src="Cars/car-hot-pink.png">
-
+<img id="car2" class="carPic" src="Cars/car-dragon.png">
 
 <!-- <div class="bg"></div> -->
 <script type="text/javascript">
@@ -127,15 +140,37 @@ parkingSpaces.push(new Space(8, 955, 63, 200, 100, 4));
 
 //Top center set of spaces index 0-8)
 
+parkingSpaces.push(new Space(9, 125, 531, 100, 200, 3));
+parkingSpaces.push(new Space(10, 125, 642, 100, 200, 3));
+parkingSpaces.push(new Space(11, 125, 753, 100, 200, 3));
+parkingSpaces.push(new Space(12, 125, 864, 100, 200, 3));
 
+//Middle middle set of spaces
 
+parkingSpaces.push(new Space(13, 505, 420, 100, 200, 1));
+parkingSpaces.push(new Space(14, 505, 531, 100, 200, 1));
+parkingSpaces.push(new Space(15, 505, 642, 100, 200, 1));
+parkingSpaces.push(new Space(16, 505, 753, 100, 200, 1));
+parkingSpaces.push(new Space(17, 505, 864, 100, 200, 1));
 
+//Middle bottom set of spaces
 
+parkingSpaces.push(new Space(18, 900, 420, 100, 200, 1));
+parkingSpaces.push(new Space(19, 900, 531, 100, 200, 1));
+parkingSpaces.push(new Space(20, 900, 642, 100, 200, 1));
+parkingSpaces.push(new Space(21, 900, 753, 100, 200, 1));
+parkingSpaces.push(new Space(22, 900, 864, 100, 200, 1));
 
+// Right set of spaces
 
-
-
-
+parkingSpaces.push(new Space(23, 70, 1205, 200, 100, 2));
+parkingSpaces.push(new Space(24, 181, 1205, 200, 100, 2));
+parkingSpaces.push(new Space(25, 292, 1205, 200, 100, 2));
+parkingSpaces.push(new Space(26, 403, 1205, 200, 100, 2));
+parkingSpaces.push(new Space(27, 514, 1205, 200, 100, 2));
+parkingSpaces.push(new Space(28, 625, 1205, 200, 100, 2));
+parkingSpaces.push(new Space(29, 736, 1205, 200, 100, 2));
+parkingSpaces.push(new Space(30, 847, 1205, 200, 100, 2));
 
 
 var space1Left = parkingSpaces[1].left; 
@@ -145,7 +180,7 @@ console.log(space1Left);
 
 // unusedSpaces.push(new ParkingLot(i));
 
-console.log(parkingSpaces);
+console.dir(parkingSpaces);
 
 </script>
 </body>
