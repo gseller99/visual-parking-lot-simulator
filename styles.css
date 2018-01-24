@@ -1,0 +1,73 @@
+#parkingLot {
+	width: 1385px;
+	height: 1035px;
+	/*position: absolute;*/
+	z-index: 1;
+	margin: 40px;
+}
+
+
+.carPic {
+	transition: transform 1s;
+    height: 100px;
+    position: absolute;
+    z-index: 51;
+	
+}
+
+#car1 {
+	transform: rotate(-90deg);
+	top: 1150px;
+	left: 262px;
+
+	}
+
+#car2 {
+	transform: rotate(90deg);
+	top: 1150px;
+	left: 1010px;
+
+	}
+
+
+ .intersection1 {
+    	background-color: lightblue;
+    	z-index: 5;
+    	height: 192px;
+    	width: 202px;
+    	position: absolute;
+    	color: orange;
+    	left: 262px;
+    	top: 665px;
+}
+
+.intersection2 {
+    	background-color: lightblue;
+    	z-index: 5;
+    	height: 192px;
+    	width: 202px;
+    	position: absolute;
+    	color: orange;
+    	left: 262px;
+    	top: 272px;
+}
+.intersection3 {
+    	background-color: lightblue;
+    	z-index: 5;
+    	height: 192px;
+    	width: 192px;
+    	position: absolute;
+    	color: orange;
+    	left: 1018px;
+    	top: 272px;
+}
+.intersection4 {
+    	background-color: lightblue;
+    	z-index: 5;
+    	height: 192px;
+    	width: 192px;
+    	position: absolute;
+    	color: orange;
+    	left: 1018px;
+    	top: 665px;
+}
