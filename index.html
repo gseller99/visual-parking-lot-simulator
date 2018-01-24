@@ -4,11 +4,11 @@
 	<meta charset="UTF-8">
 	<title>Visual Parking Lot Simulator</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="javascript" type="text/javascript" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+ -->
 <style type="text/css">
 
 #parkingLot {
@@ -36,30 +36,38 @@
 <body>
 
 <img id="parkingLot" src="parkinglot.jpg">
-<img id="car1" class="carPic" src="Cars/car-hot-pink.png">
+<!-- <img id="car1" class="carPic" src="Cars/car-hot-pink.png"> -->
 
 <!-- <div class="bg"></div> -->
 <script type="text/javascript">
 
-function Space(top, left, width, height, orientation, openingDir) {
+var parkingSpaces = [];
+
+function Space(id, top, left, width, height, orientation, openingDir) {
+this.id = id;
 this.top = top;
 this.left = left;
 this.width = width;
 this.height = height;
 this.orientation = orientation;
 this.openingDir = openingDir;
-this.projection = calculateProjection();
-function calculateProjection( ){
-	//use orientation and openingDirection to calculate projection properties
+// this.projection = calculateProjection();
+// function calculateProjection( ){
+// 	//use orientation and openingDirection to calculate projection properties
+// }
 }
-}
 
-var spaces = [
+parkingSpaces.push(new Space(0, 15, 12, 200, 110));
+parkingSpaces.push(new Space(1, 30, 12, 200, 110));
 
-new Space(15, 12, 200, 110)
+// var space1Id = Space[1].id; 
 
-]	
+// console.log(space1Id);
 
+
+// unusedSpaces.push(new ParkingLot(i));
+
+console.log(parkingSpaces);
 
 </script>
 </body>
