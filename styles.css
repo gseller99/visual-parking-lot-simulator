@@ -21,6 +21,9 @@
 }
 
 .leftSpaces {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: red;
     width: 200px;
     height: 100px;
