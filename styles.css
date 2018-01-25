@@ -6,6 +6,41 @@
 	margin: 40px;
 }
 
+#startSpace {
+    color: blue;
+    width: 200px;
+    height: 100px;
+    background-color: orange;
+    z-index: 10;
+    position: absolute;
+    text-align: center;
+    font-size: 40px;
+    transform: rotate(-90deg);
+    top: 1150px;
+    left: 262px;
+}
+
+.leftSpaces {
+    color: red;
+    width: 200px;
+    height: 100px;
+    background-color: yellow;
+    z-index: 10;
+    position: absolute;
+    text-align: center;
+    font-size: 40px;
+    transform: rotate(0deg);
+}
+
+#space0 {
+    top: 63px;
+    left: 67px;
+}
+
+#space1 {
+    top: 178px;
+    left: 63px; 
+}
 
 .carPic {
 	transition: transform 1s;
@@ -26,9 +61,7 @@
 	transform: rotate(90deg);
 	top: 1150px;
 	left: 1010px;
-
 	}
-
 
  .intersection1 {
     	background-color: lightblue;
