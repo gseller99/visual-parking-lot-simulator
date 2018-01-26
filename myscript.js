@@ -13,18 +13,17 @@ console.log(carInTransit);
 
 var carInStart = null;
 
+var intervalId;
 
 //**************CARS*****************
 //These are variables that will help cycle through to make unique cars
 
-var vehicleMakes = ["Toyota", "Mercedes", "Oldsmobile", "Buick", "Ford", "Kia"];
-var vehicleYears = [2000, 2005, 2010, 2015, 2017];
+var vehicleImage = ["Cars/car-lime-green.png", "Cars/car-orange.png", "Cars/car-yellow.png", "Cars/car-aqua.png", "Cars/car-dragon.png", "Cars/car-purple.png"];
 var licensePlate = ["fbs201", "stss2211", "lock325"]
 
 //object constructor for a car
-function Car(make, year, plate) {
-    this.make = make;
-    this.year = year;
+function Car(image, plate) {
+    this.image = image;
     this.plate = plate;
     this.parked = false;
     this.space = null;
@@ -33,14 +32,11 @@ function Car(make, year, plate) {
 
 //for loop to create a collection of unparked cars
 for (var i = 0; i < 20; i++) {
-    var makeIndex = i % vehicleMakes.length;
-    var make = vehicleMakes[makeIndex];
-    var yearIndex = i % vehicleYears.length;
-    var year = vehicleYears[yearIndex];
+    var imageIndex = i % vehicleImage.length;
+    var image = vehicleImage[imageIndex];
     var plateIndex = i % licensePlate.length;
     var plate = licensePlate[plateIndex];
-
-    unparkedCars.push(new Car(make, year, i + "-" + plate));
+    unparkedCars.push(new Car(image, i + "-" + plate));
 }
 //displays array of unparkedCars
 console.dir(unparkedCars);
@@ -119,7 +115,7 @@ parkingSpaces.push(new UnusedSpaces(29, 736, 1205, 200, 100, 2));
 parkingSpaces.push(new UnusedSpaces(30, 847, 1205, 200, 100, 2));
 
 
-var space1Left = parkingSpaces[1].left;
+var space1Left = parkingSpaces[0].left;
 
 console.log(space1Left);
 
@@ -127,20 +123,21 @@ console.log(space1Left);
 
 console.dir(parkingSpaces);
 
+
+
+//Functions for buttons
 //*** reset runs when page loads ***
 
 resetCars();
 
-function resetCars() {
-    }
+function resetCars() {}
 
 //Initial start of car
 
 
 function startCar1() {
-    intervalId = setInterval(moveCar1East, 50);
+    intervalId = setInterval(moveCar1North, 50);
 }
-
 
 //Clearing interval of car
 
@@ -149,10 +146,34 @@ function stopCars() {
 
 }
 
-let car = document.querySelector('#car1');
-let carTop = getComputedStyle(car).top;
 
-console.log(carTop);
+//********CAR MOVES*********
+// let car1 = document.querySelector('#car1');
+// let car1Top = getComputedStyle(car1).top;
+
+// console.log(car1Top);
+
+// //NORTH
+
+// //Move car north
+
+// function moveCar1North () {
+// 	// carRunning();
+// 	let car1Left = getComputedStyle(car1).left.replace('px', '');
+// 	let car1Top = getComputedStyle(car1).top.replace('px', '');
+
+// 	if(car1Top <= 320) {
+// 		// carSkid();
+// 		stopCars();
+// 	// setTimeout(startCar1IntersectionNorth, 200);
+// 	} 
+
+// 	console.log(car1.style.left + ' = left');
+// 	console.log(car1Left + ' = left');
+// 	console.log(car1Top + ' = top');
+
+// 	car1.style.top = `${parseInt(car1Top) - 10}px`;
+// }
 
 
 
@@ -160,51 +181,90 @@ console.log(carTop);
 
 //***Major code to have program run***
 
-// function getCarToPark() {
-//     console.log ("trying to find a car to park");
-//     if (carInTransit != null) {
-//         return carInTransit;
-//     }
-//     if (carInStart != null) {
-//         return carInStart;
-//     }
-//     if (unparkedCars.length > 0) {
-//         return unparkedCars.shift();
-//     }
-//     return null;
-// };
-
-// function tick() {
-//     var car = getCarToPark();
-//     if (car !== null) {
-//         //look for a space to park car
-//         var space = getAvailableSpace();
-//         //if a space is available start driving the car toward the space
-//         if (space !== null) {
-//         	driveCarToSpace(car,space);
-//         }
-//     }
-//     else {
-//     	clearInterval(gameLoop);
-//     	console.log("done parking cars");
-//     }
-// }
-
-// function getAvailableSpace () {
-// 	console.log("looking for an available space");
-// 	//if car in transit return its assigned space
-// 	//look in unused spaces array and shift out first one
-// 	//otherwise return null
-
-// }
-
-// function driveCarToSpace (car, space) {
-// 	console.log("driving car to space");
-// 	// Am I at an intersection
-// 	// 
-// }
-
-// var gameLoop = setInterval(tick, 50);
 
 
+function tick() {
+    var car = getCarToPark();
+    if (car !== null) {
+        //look for a space to park car
+        var space = getAvailableSpace();
+        //if a space is available start driving the car toward the space
+        if (space !== null) {
+            driveCarToSpace(car, space);
+        }
+    } else {
+        clearInterval(gameLoop);
+        console.log("done parking cars");
+    }
+}
 
+var gameLoop = setInterval(tick, 50);
+
+
+function getCarToPark() {
+    console.log("trying to find a car to park");
+    if (carInTransit != null) {
+        return carInTransit;
+    }
+    if (carInStart != null) {
+        return carInStart;
+    }
+    if (unparkedCars.length > 0) {
+        return unparkedCars.shift();
+    }
+    return null;
+};
+
+
+function getAvailableSpace() {
+    console.log("looking for an available space");
+    if (carInTransit != null) {
+        return carInTransit.space;
+    }
+    if (unusedSpaces.length > 0) {
+        return unusedSpaces.shift();
+    }
+    return null;
+}
+
+
+function driveCarToSpace(car, space) {
+    console.log("driving car to space");
+    car.space = space;
+
+    if (carInTransit === car) {
+        continueDrivingCarToSpace(car);
+        return;
+    }
+
+    if (carInStart === car) {
+    	driveCarForward (car);
+    	carInStart = null;
+    	carInTransit = car;
+    	return;
+    }
+
+    drawCarAtStartingLine(car);
+    carInStart = car;
+}
+
+function continueDrivingCarToSpace(car) {
+    console.log("driving to space");
+}
+
+function driveCarForward (car) {
+	console.log ("moving car forward from start");
+}
+
+function drawCarAtStartingLine(car) {
+	var carImage = createCarImage(car);
+	moveCarImageToStartingLine(carImage);
+}
+
+function createCarImage (car) {
+
+}
+
+function moveCarImageToStartingLine (carImage) {
+
+}

@@ -57,13 +57,14 @@
 	transform: rotate(-90deg);
 	top: 1150px;
 	left: 262px;
-
+    position: absolute;
 	}
 
 #car2 {
 	transform: rotate(90deg);
 	top: 1150px;
 	left: 1010px;
+    position: absolute;
 	}
 
  .intersection1 {
