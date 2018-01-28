@@ -46,26 +46,26 @@
 }
 
 .carPic {
-	transition: transform 1s;
+	transform: rotate(-90deg);
+    top: 1150px;
+    left: 262px; 
     height: 100px;
     position: absolute;
     z-index: 51;
-	
+    /*transition: transform 1s;*/
+    
 }
 
-#car1 {
-	transform: rotate(-90deg);
-	top: 1150px;
-	left: 262px;
-    position: absolute;
-	}
 
 #car2 {
 	transform: rotate(90deg);
 	top: 1150px;
 	left: 1010px;
+    height: 100px;
     position: absolute;
-	}
+    z-index: 51;
+	
+}
 
  .intersection1 {
     	background-color: lightblue;

@@ -9,8 +9,6 @@ var usedSpaces = [];
 
 var carInTransit = null;
 
-console.log(carInTransit);
-
 var carInStart = null;
 
 var intervalId;
@@ -36,16 +34,18 @@ for (var i = 0; i < 20; i++) {
     var image = vehicleImage[imageIndex];
     var plateIndex = i % licensePlate.length;
     var plate = licensePlate[plateIndex];
-    unparkedCars.push(new Car(image, i + "-" + plate));
+unparkedCars.push(new Car(image, i + "-" + plate));
 }
 //displays array of unparkedCars
+console.log("first display of cars");
 console.dir(unparkedCars);
 
-var parkingSpaces = [];
+
+// var unusedSpaces = [];
 
 // This is an object constructor for making unused spaces
 
-function UnusedSpaces(id, top, left, width, height, openingDir, orientation) {
+function Spaces(id, top, left, width, height, openingDir, orientation) {
     this.id = id;
     this.top = top;
     this.left = left;
@@ -70,67 +70,68 @@ function UnusedSpaces(id, top, left, width, height, openingDir, orientation) {
 
 //Left set of unused spaces index 0-8)
 
-parkingSpaces.push(new UnusedSpaces(0, 67, 63, 200, 100, 4));
-parkingSpaces.push(new UnusedSpaces(1, 178, 63, 200, 100, 4));
-parkingSpaces.push(new UnusedSpaces(2, 289, 63, 200, 100, 4));
-parkingSpaces.push(new UnusedSpaces(3, 400, 63, 200, 100, 4));
-parkingSpaces.push(new UnusedSpaces(4, 511, 63, 200, 100, 4));
-parkingSpaces.push(new UnusedSpaces(5, 622, 63, 200, 100, 4));
-parkingSpaces.push(new UnusedSpaces(6, 733, 63, 200, 100, 4));
-parkingSpaces.push(new UnusedSpaces(7, 844, 63, 200, 100, 4));
-parkingSpaces.push(new UnusedSpaces(8, 955, 63, 200, 100, 4));
+unusedSpaces.push(new Spaces(0, 67, 63, 200, 100, 4));
+unusedSpaces.push(new Spaces(1, 178, 63, 200, 100, 4));
+unusedSpaces.push(new Spaces(2, 289, 63, 200, 100, 4));
+unusedSpaces.push(new Spaces(3, 400, 63, 200, 100, 4));
+unusedSpaces.push(new Spaces(4, 511, 63, 200, 100, 4));
+unusedSpaces.push(new Spaces(5, 622, 63, 200, 100, 4));
+unusedSpaces.push(new Spaces(6, 733, 63, 200, 100, 4));
+unusedSpaces.push(new Spaces(7, 844, 63, 200, 100, 4));
+unusedSpaces.push(new Spaces(8, 955, 63, 200, 100, 4));
 
 //Top center set of unspaces index 0-8)
 
-parkingSpaces.push(new UnusedSpaces(9, 125, 531, 100, 200, 1));
-parkingSpaces.push(new UnusedSpaces(10, 125, 642, 100, 200, 1));
-parkingSpaces.push(new UnusedSpaces(11, 125, 753, 100, 200, 1));
-parkingSpaces.push(new UnusedSpaces(12, 125, 864, 100, 200, 1));
+unusedSpaces.push(new Spaces(9, 125, 531, 100, 200, 1));
+unusedSpaces.push(new Spaces(10, 125, 642, 100, 200, 1));
+unusedSpaces.push(new Spaces(11, 125, 753, 100, 200, 1));
+unusedSpaces.push(new Spaces(12, 125, 864, 100, 200, 1));
 
 //Middle middle set of unspaces
 
-parkingSpaces.push(new UnusedSpaces(13, 505, 420, 100, 200, 3));
-parkingSpaces.push(new UnusedSpaces(14, 505, 531, 100, 200, 3));
-parkingSpaces.push(new UnusedSpaces(15, 505, 642, 100, 200, 3));
-parkingSpaces.push(new UnusedSpaces(16, 505, 753, 100, 200, 3));
-parkingSpaces.push(new UnusedSpaces(17, 505, 864, 100, 200, 3));
+unusedSpaces.push(new Spaces(13, 505, 420, 100, 200, 3));
+unusedSpaces.push(new Spaces(14, 505, 531, 100, 200, 3));
+unusedSpaces.push(new Spaces(15, 505, 642, 100, 200, 3));
+unusedSpaces.push(new Spaces(16, 505, 753, 100, 200, 3));
+unusedSpaces.push(new Spaces(17, 505, 864, 100, 200, 3));
 
 //Middle bottom set of unspaces
 
-parkingSpaces.push(new UnusedSpaces(18, 900, 420, 100, 200, 3));
-parkingSpaces.push(new UnusedSpaces(19, 900, 531, 100, 200, 3));
-parkingSpaces.push(new UnusedSpaces(20, 900, 642, 100, 200, 3));
-parkingSpaces.push(new UnusedSpaces(21, 900, 753, 100, 200, 3));
-parkingSpaces.push(new UnusedSpaces(22, 900, 864, 100, 200, 3));
+unusedSpaces.push(new Spaces(18, 900, 420, 100, 200, 3));
+unusedSpaces.push(new Spaces(19, 900, 531, 100, 200, 3));
+unusedSpaces.push(new Spaces(20, 900, 642, 100, 200, 3));
+unusedSpaces.push(new Spaces(21, 900, 753, 100, 200, 3));
+unusedSpaces.push(new Spaces(22, 900, 864, 100, 200, 3));
 
 // Right set of unspaces
 
-parkingSpaces.push(new UnusedSpaces(23, 70, 1205, 200, 100, 2));
-parkingSpaces.push(new UnusedSpaces(24, 181, 1205, 200, 100, 2));
-parkingSpaces.push(new UnusedSpaces(25, 292, 1205, 200, 100, 2));
-parkingSpaces.push(new UnusedSpaces(26, 403, 1205, 200, 100, 2));
-parkingSpaces.push(new UnusedSpaces(27, 514, 1205, 200, 100, 2));
-parkingSpaces.push(new UnusedSpaces(28, 625, 1205, 200, 100, 2));
-parkingSpaces.push(new UnusedSpaces(29, 736, 1205, 200, 100, 2));
-parkingSpaces.push(new UnusedSpaces(30, 847, 1205, 200, 100, 2));
+unusedSpaces.push(new Spaces(23, 70, 1205, 200, 100, 2));
+unusedSpaces.push(new Spaces(24, 181, 1205, 200, 100, 2));
+unusedSpaces.push(new Spaces(25, 292, 1205, 200, 100, 2));
+unusedSpaces.push(new Spaces(26, 403, 1205, 200, 100, 2));
+unusedSpaces.push(new Spaces(27, 514, 1205, 200, 100, 2));
+unusedSpaces.push(new Spaces(28, 625, 1205, 200, 100, 2));
+unusedSpaces.push(new Spaces(29, 736, 1205, 200, 100, 2));
+unusedSpaces.push(new Spaces(30, 847, 1205, 200, 100, 2));
 
 
-var space1Left = parkingSpaces[0].left;
+var space1Left = unusedSpaces[0].left;
 
-console.log(space1Left);
+console.log(space1Left + ' = left position of first index position');
 
 // unusedSpaces.push(new ParkingLot(i));
 
-console.dir(parkingSpaces);
+console.log('first display of unused spaces');
+console.dir(unusedSpaces);
 
 
 
 //Functions for buttons
 //*** reset runs when page loads ***
 
-resetCars();
+// resetCars();
 
-function resetCars() {}
+// function resetCars() {}
 
 //Initial start of car
 
@@ -142,7 +143,7 @@ function startCar1() {
 //Clearing interval of car
 
 function stopCars() {
-    clearInterval(intervalId);
+    clearInterval(gameLoop);
 
 }
 
@@ -183,22 +184,7 @@ function stopCars() {
 
 
 
-function tick() {
-    var car = getCarToPark();
-    if (car !== null) {
-        //look for a space to park car
-        var space = getAvailableSpace();
-        //if a space is available start driving the car toward the space
-        if (space !== null) {
-            driveCarToSpace(car, space);
-        }
-    } else {
-        clearInterval(gameLoop);
-        console.log("done parking cars");
-    }
-}
 
-var gameLoop = setInterval(tick, 50);
 
 
 function getCarToPark() {
@@ -210,6 +196,7 @@ function getCarToPark() {
         return carInStart;
     }
     if (unparkedCars.length > 0) {
+        console.log("shifting out a car");
         return unparkedCars.shift();
     }
     return null;
@@ -217,6 +204,8 @@ function getCarToPark() {
 
 
 function getAvailableSpace() {
+    console.log('the next value is the first index spot of unused spaces');
+    console.log(unusedSpaces[0]);
     console.log("looking for an available space");
     if (carInTransit != null) {
         return carInTransit.space;
@@ -231,7 +220,6 @@ function getAvailableSpace() {
 function driveCarToSpace(car, space) {
     console.log("driving car to space");
     car.space = space;
-
     if (carInTransit === car) {
         continueDrivingCarToSpace(car);
         return;
@@ -243,12 +231,13 @@ function driveCarToSpace(car, space) {
     	carInTransit = car;
     	return;
     }
-
+    console.log("going to draw car at starting line");
     drawCarAtStartingLine(car);
     carInStart = car;
 }
 
 function continueDrivingCarToSpace(car) {
+    
     console.log("driving to space");
 }
 
@@ -257,14 +246,44 @@ function driveCarForward (car) {
 }
 
 function drawCarAtStartingLine(car) {
-	var carImage = createCarImage(car);
-	moveCarImageToStartingLine(carImage);
+	console.log("attempting to draw image");
+    var carImage = createCarImage(car);
+    carInStart = carImage;
+    return;
+	// moveCarImageToStartingLine(carImage);
 }
 
 function createCarImage (car) {
-
+console.log("the next value is car for the image");
+console.log(car);
+var image = car.image
+console.log(image);
+var carImage = document.createElement('img');
+carImage.setAttribute('class', 'carPic');
+carImage.setAttribute('src', image);
+document.body.appendChild(carImage);
+console.dir(carImage);
+return; 
 }
 
-function moveCarImageToStartingLine (carImage) {
 
+function tick() {
+    var car = getCarToPark();
+    console.dir(car);
+    if (car !== null) {
+        //look for a space to park car
+        console.dir(car);
+        var space = getAvailableSpace();
+        console.dir(space);
+        //if a space is available start driving the car toward the space
+        if (space !== null) {
+         console.log("executing drive Car to Space")   
+            driveCarToSpace(car, space);
+        }
+    } else {
+        clearInterval(gameLoop);
+        console.log("done parking cars");
+    }
 }
+
+var gameLoop = setInterval(tick, 50);
