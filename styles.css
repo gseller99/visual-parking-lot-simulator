@@ -47,8 +47,8 @@
 
 .carPic {
 	transform: rotate(-90deg);
-    top: 1150px;
-    left: 262px; 
+    /*top: 1150px;
+    left: 262px;*/ 
     height: 100px;
     position: absolute;
     z-index: 51;

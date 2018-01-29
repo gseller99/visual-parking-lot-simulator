@@ -19,6 +19,15 @@ var intervalId;
 var vehicleImage = ["Cars/car-lime-green.png", "Cars/car-orange.png", "Cars/car-yellow.png", "Cars/car-aqua.png", "Cars/car-dragon.png", "Cars/car-purple.png"];
 var licensePlate = ["fbs201", "stss2211", "lock325"]
 
+function Opening(top, left, width) {
+    this.top = top;
+    this.left = left;
+    this.width = width;
+}
+
+var entrance = new Opening(1150, 262, 200);
+var exit = new Opening(1150, 1010, 200);
+
 //object constructor for a car
 function Car(image, plate) {
     this.image = image;
@@ -136,13 +145,13 @@ console.dir(unusedSpaces);
 //Initial start of car
 
 
-function startCar1() {
-    intervalId = setInterval(moveCar1North, 50);
-}
+// function startCar1() {
+//     intervalId = setInterval(moveCar1North, 50);
+// }
 
 //Clearing interval of car
 
-function stopCars() {
+function stopCar() {
     clearInterval(gameLoop);
 
 }
@@ -190,6 +199,7 @@ function stopCars() {
 function getCarToPark() {
     console.log("trying to find a car to park");
     if (carInTransit != null) {
+        console.dir(carInTransit + ' = car in TRANSIT');
         return carInTransit;
     }
     if (carInStart != null) {
@@ -226,7 +236,8 @@ function driveCarToSpace(car, space) {
     }
 
     if (carInStart === car) {
-    	driveCarForward (car);
+    	console.log('getting car ready to drive forward');
+        driveCarForward (car);
     	carInStart = null;
     	carInTransit = car;
     	return;
@@ -237,12 +248,29 @@ function driveCarToSpace(car, space) {
 }
 
 function continueDrivingCarToSpace(car) {
-    
     console.log("driving to space");
+    car.element.style.top = `${parseInt(car.element.style.top.replace("px", "")) - 10}px`;
+    var carTop = `${parseInt(car.element.style.top.replace("px", ""))}`;
+    console.log(carTop);
+    if (carTop <= 320) {
+        stopCar();
+    }
 }
 
 function driveCarForward (car) {
-	console.log ("moving car forward from start");
+	console.dir(car);
+    console.log ("moving car forward from start");
+    //Move car north
+    moveCarNorth (car);
+    carInTransit = car;
+    return
+}
+
+function moveCarNorth (car) {
+    console.log("moving this damn car  NORTH")
+    console.dir(car.element);
+    car.element.style.top = `${parseInt(car.element.style.top.replace("px", "")) - 100}px`;
+return
 }
 
 function drawCarAtStartingLine(car) {
@@ -262,12 +290,15 @@ var carImage = document.createElement('img');
 carImage.setAttribute('class', 'carPic');
 carImage.setAttribute('src', image);
 document.body.appendChild(carImage);
-console.dir(carImage);
+car.element = carImage;
+console.dir(car.element);
+car.element.style.top = entrance.top + 'px';
+car.element.style.left = entrance.left + 'px';
 return; 
 }
 
 
-function tick() {
+function tickTock() {
     var car = getCarToPark();
     console.dir(car);
     if (car !== null) {
@@ -286,4 +317,4 @@ function tick() {
     }
 }
 
-var gameLoop = setInterval(tick, 50);
+var gameLoop = setInterval(tickTock, 50);
