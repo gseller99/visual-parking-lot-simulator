@@ -196,28 +196,21 @@ function driveCarToSpace(car, space) {
 
 function continueDrivingCarToSpace(car) {
     console.log("driving to space");
-    car.element.style.top = `${parseInt(car.element.style.top.replace("px", "")) - 10}px`;
-    var carTop = `${parseInt(car.element.style.top.replace("px", ""))}`;
-    console.dir(car);
-    console.log(carTop);
-    if (carTop <= 320) {
-        console.log(car.element);
-        car.element.style.transform = 'rotate(0deg)';
-        // moveCarEast (car);
-        stopCar();
-    }
+    moveCarNorth (car);
+
+    
 }
 
 function driveCarForward (car) {
 	console.dir(car);
     console.log ("moving car forward from start");
     //Move car north
-    moveCarNorth (car);
+    moveCarOutOfStart (car);
     carInTransit = car;
     return
 }
 
-function moveCarNorth (car) {
+function moveCarOutOfStart (car) {
     console.log(unparkedCars.length);
     console.log("moving this damn car  NORTH")
     console.dir(car.element);
@@ -226,13 +219,32 @@ function moveCarNorth (car) {
 return
 }
 
+//Move Car North
+
+function moveCarNorth (car) {
+car.element.style.top = `${parseInt(car.element.style.top.replace("px", "")) - 10}px`;
+    var carTop = `${parseInt(car.element.style.top.replace("px", ""))}`;
+    console.dir(car);
+    console.log(carTop);
+    if (carTop <= 320) {
+        car.element.style.transform = 'rotate(0deg)';
+        // moveCarEast (car);
+        stopCar();
+    }
+}
+
 // function moveCarEast (car) {
-//     console.log(unparkedCars.length);
-//     console.log("moving this damn car  NORTH")
-//     console.dir(car.element);
-//     car.element.style.top = `${parseInt(car.element.style.top.replace("px", "")) - 10
-// }px`;
-// return
+
+// function moveCarNorth (car) {
+// car.element.style.top = `${parseInt(car.element.style.top.replace("px", "")) - 10}px`;
+//     var carTop = `${parseInt(car.element.style.top.replace("px", ""))}`;
+//     console.dir(car);
+//     console.log(carTop);
+//     if (carTop <= 320) {
+//         car.element.style.transform = 'rotate(0deg)';
+//         // moveCarEast (car);
+//         stopCar();
+//     }
 // }
 
 
