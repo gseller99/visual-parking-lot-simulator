@@ -128,28 +128,10 @@ var space1Left = unusedSpaces[0].left;
 
 console.log(space1Left + ' = left position of first index position');
 
-// unusedSpaces.push(new ParkingLot(i));
+
 
 console.log('first display of unused spaces');
 console.dir(unusedSpaces);
-
-
-
-//Functions for buttons
-//*** reset runs when page loads ***
-
-// resetCars();
-
-// function resetCars() {}
-
-//Initial start of car
-
-
-// function startCar1() {
-//     intervalId = setInterval(moveCar1North, 50);
-// }
-
-//Clearing interval of car
 
 function stopCar() {
     clearInterval(gameLoop);
@@ -157,44 +139,7 @@ function stopCar() {
 }
 
 
-//********CAR MOVES*********
-// let car1 = document.querySelector('#car1');
-// let car1Top = getComputedStyle(car1).top;
-
-// console.log(car1Top);
-
-// //NORTH
-
-// //Move car north
-
-// function moveCar1North () {
-// 	// carRunning();
-// 	let car1Left = getComputedStyle(car1).left.replace('px', '');
-// 	let car1Top = getComputedStyle(car1).top.replace('px', '');
-
-// 	if(car1Top <= 320) {
-// 		// carSkid();
-// 		stopCars();
-// 	// setTimeout(startCar1IntersectionNorth, 200);
-// 	} 
-
-// 	console.log(car1.style.left + ' = left');
-// 	console.log(car1Left + ' = left');
-// 	console.log(car1Top + ' = top');
-
-// 	car1.style.top = `${parseInt(car1Top) - 10}px`;
-// }
-
-
-
-
-
 //***Major code to have program run***
-
-
-
-
-
 
 function getCarToPark() {
     console.log("trying to find a car to park");
@@ -212,6 +157,7 @@ function getCarToPark() {
     return null;
 };
 
+//********CAR MOVES*********
 
 function getAvailableSpace() {
     console.log('the next value is the first index spot of unused spaces');
@@ -229,6 +175,7 @@ function getAvailableSpace() {
 
 function driveCarToSpace(car, space) {
     console.log("driving car to space");
+    console.log(unparkedCars.length);
     car.space = space;
     if (carInTransit === car) {
         continueDrivingCarToSpace(car);
@@ -251,8 +198,12 @@ function continueDrivingCarToSpace(car) {
     console.log("driving to space");
     car.element.style.top = `${parseInt(car.element.style.top.replace("px", "")) - 10}px`;
     var carTop = `${parseInt(car.element.style.top.replace("px", ""))}`;
+    console.dir(car);
     console.log(carTop);
     if (carTop <= 320) {
+        console.log(car.element);
+        car.element.style.transform = 'rotate(0deg)';
+        // moveCarEast (car);
         stopCar();
     }
 }
@@ -267,11 +218,23 @@ function driveCarForward (car) {
 }
 
 function moveCarNorth (car) {
+    console.log(unparkedCars.length);
     console.log("moving this damn car  NORTH")
     console.dir(car.element);
-    car.element.style.top = `${parseInt(car.element.style.top.replace("px", "")) - 100}px`;
+    car.element.style.top = `${parseInt(car.element.style.top.replace("px", "")) - 10
+}px`;
 return
 }
+
+// function moveCarEast (car) {
+//     console.log(unparkedCars.length);
+//     console.log("moving this damn car  NORTH")
+//     console.dir(car.element);
+//     car.element.style.top = `${parseInt(car.element.style.top.replace("px", "")) - 10
+// }px`;
+// return
+// }
+
 
 function drawCarAtStartingLine(car) {
 	console.log("attempting to draw image");
